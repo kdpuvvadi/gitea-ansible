@@ -4,3 +4,11 @@
     update_cache: true
     cache_valid_time: 3600
     upgrade: full
+
+- name: apt install packages
+  apt:
+    name:
+      - curl
+      - git
+    state: present
+    cache_valid_time: 3600
