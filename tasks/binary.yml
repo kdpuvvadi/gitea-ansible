@@ -2,5 +2,5 @@
 - name: Download gitea binary
   get_url:
     url: https://dl.gitea.io/gitea/1.14.6/gitea-{{ gitea_varsion }}-linux-amd64
-    dest: /tmp/git/gitea
+    dest: /tmp/gitea
     mode: 0775

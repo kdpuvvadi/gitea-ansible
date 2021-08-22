@@ -8,3 +8,7 @@
 
     - name: cache update
       import_tasks: pre_tasks/packages.yml
+
+  tasks:
+    - name: Download and verify the binary
+      import_tasks: tasks/binary.yml
