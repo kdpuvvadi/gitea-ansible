@@ -7,4 +7,4 @@
       include_vars: vars.yml
 
     - name: cache update
-      import_tasks: tasks/packages.yml
+      import_tasks: pre_tasks/packages.yml
