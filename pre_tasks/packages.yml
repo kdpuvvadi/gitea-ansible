@@ -5,7 +5,7 @@
     cache_valid_time: 3600
     upgrade: full
 
-- name: apt install packages
+- name: install git and curl
   apt:
     name:
       - curl
