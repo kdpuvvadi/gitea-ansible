@@ -7,13 +7,13 @@
 
 - name: Download gitea binary
   get_url:
-    url: https://dl.gitea.io/gitea/{{ gitea_varsion }}/gitea-{{ gitea_varsion }}-linux-amd64
+    url: https://github.com/go-gitea/gitea/releases/download/v{{ gitea_varsion }}/gitea-{{ gitea_varsion }}-linux-amd64
     dest: /home/{{ ansible_user }}/binary
     mode: 0775
 
 - name: Download gitea asc file
   get_url:
-    url: https://dl.gitea.io/gitea/{{ gitea_varsion }}/gitea-{{ gitea_varsion }}-linux-amd64.xz.asc
+    url: https://github.com/go-gitea/gitea/releases/download/v{{ gitea_varsion }}/gitea-{{ gitea_varsion }}-linux-amd64.asc
     dest: /home/{{ ansible_user }}/binary
 
 - name: Check gitea gpg key status
@@ -23,9 +23,9 @@
 
 - name: install gitea gpg key
   command: "gpg --keyserver {{ gpg_server_gitea }} --recv {{ gpg_key_gitea }}"
-  register: _gitea_import_key
-  when: gpg_key_gitea_status.rc != 0
+  register: gitea_import_key
+  when: gpg_key_gitea_status.rc == 1
 
 - name: verify binary signature
-  command: "gpg --verify /home/{{ ansible_user }}/binary/gitea-{{ gitea_varsion }}-linux-amd64.xz.asc /home/{{ ansible_user }}/binary/gitea-{{ gitea_varsion }}-linux-amd64"
+  command: "gpg --verify /home/{{ ansible_user }}/binary/gitea-{{ gitea_varsion }}-linux-amd64.asc /home/{{ ansible_user }}/binary/gitea-{{ gitea_varsion }}-linux-amd64"
   changed_when: false
