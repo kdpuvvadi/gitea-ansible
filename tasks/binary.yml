@@ -19,6 +19,7 @@
 - name: Check gitea gpg key status
   command: "gpg --list-keys 0x{{ gpg_key_gitea }}"
   register: gpg_key_gitea_status
+  failed_when: gpg_key_gitea_status.rc not in (0, 2)
 
 - name: install gitea gpg key
   command: "gpg --keyserver {{ gpg_server_gitea }} --recv {{ gpg_key_gitea }}"
