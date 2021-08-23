@@ -18,9 +18,9 @@
 
 - name: Check gitea gpg key status
   command: "gpg --list-keys 0x{{ gpg_key_gitea }}"
-  register: gitea_gpg_key_status
+  register: gpg_key_gitea_status
 
 - name: install gitea gpg key
   command: "gpg --keyserver {{ gpg_server_gitea }} --recv {{ gpg_key_gitea }}"
   register: _gitea_import_key
-  when: gitea_gpg_key_status.rc != 0
+  when: gpg_key_gitea_status.rc != 0
