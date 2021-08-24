@@ -1,0 +1,10 @@
+---
+
+- name: check binary exists
+  stat: 
+    path: /home/{{ ansible_user }}/binary/gitea
+  register: stat_result
+
+- name: move binary to global location
+  command: mv /home/{{ ansible_user }}/binary/gitea /usr/local/bin/gitea
+  when: stat_result.exists == true
