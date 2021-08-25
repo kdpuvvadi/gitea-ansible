@@ -3,8 +3,13 @@
 - name: check binary exists
   stat: 
     path: /home/{{ ansible_user }}/binary/gitea
-  register: stat_result
+  register: binary_status  
+
+- name: rename downloaded binary
+  command: "cp /home/{{ ansible_user }}/binary/gitea-{{ gitea_varsion }}-linux-amd64 /home/{{ ansible_user }}/binary/gitea"
+  when: binary_status.stat.exists != true
+
 
 - name: move binary to global location
   command: cp /home/{{ ansible_user }}/binary/gitea /usr/local/bin/gitea
-  when: stat_result.stat.exists
+  when: binary_status.stat.exists
