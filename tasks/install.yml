@@ -29,3 +29,7 @@
     name: gitea
     enabled: yes
     state: started
+
+- name: Reboot
+  reboot:
+    reboot_timeout: 3600
