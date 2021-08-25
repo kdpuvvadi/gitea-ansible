@@ -30,6 +30,11 @@
     enabled: yes
     state: started
 
+- name: check if reboot is needed
+  stat: path=/var/run/reboot-required
+  register: check_reboot
+
 - name: Reboot
   reboot:
     reboot_timeout: 3600
+  when: check_reboot.stat.exists
