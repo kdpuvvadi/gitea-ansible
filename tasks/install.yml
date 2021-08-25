@@ -23,3 +23,9 @@
     url: " {{ service_config_url }} "
     dest: /etc/systemd/system/gitea.service
     mode: 0775
+
+- name: service start
+  service: 
+    name: gitea
+    enabled: yes
+    state: started
