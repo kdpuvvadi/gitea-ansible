@@ -24,7 +24,7 @@
 - name: install gitea gpg key
   command: "gpg --keyserver {{ gpg_server_gitea }} --recv {{ gpg_key_gitea }}"
   register: gitea_import_key
-  when: gpg_key_gitea_status.rc == 1
+  #when: gpg_key_gitea_status.rc == 1
 
 - name: verify binary signature
   command: "gpg --verify /home/{{ ansible_user }}/binary/gitea-{{ gitea_varsion }}-linux-amd64.asc /home/{{ ansible_user }}/binary/gitea-{{ gitea_varsion }}-linux-amd64"
