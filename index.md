@@ -1,7 +1,7 @@
 
 # LAMP Stack deployment using ansible playbook
 
-Deploy Gitea, A painless self-hosted Git service on Debian with ansible playbook
+Deploy Gitea, A painless self-hosted Git service on Debian System with ansible playbook
 
 ## Getting Started
 
