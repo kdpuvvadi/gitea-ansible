@@ -1,37 +1,117 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/kdpuvvadi/gitea-ansible/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# LAMP Stack deployment using ansible playbook
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Deploy Gitea, A painless self-hosted Git service on Debian with ansible playbook
 
-### Markdown
+## Getting Started
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Inventory
 
-```markdown
-Syntax highlighted code block
+* Copy sample invetory file `example.inventory.ini` to `inventory.ini` using
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```bash
+cp example.inventory.ini.j2 inventory.ini
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+* Change `ansible_host` value with host IP
+* Add ssh username to `ansible_user`
 
-### Jekyll Themes
+### Variables
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kdpuvvadi/gitea-ansible/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Copy sample variable file located in vars directory
+`example.vars.yml` to `vars.yml` using `cp example.vars.yml vars.yml`
 
-### Support or Contact
+## Ansible Installation
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Install ansible with the following
+
+### Install python3 & pip3
+
+```bash
+sudo apt install python3 python3-pip -y`
+```
+
+### Install ansible
+
+```bash
+python3 -m pip install ansible
+```
+
+### install required modules
+
+```bash
+ansible-galaxy collection install -r requirements.yml
+```
+
+## Deployment
+
+To deploy LAMP stack on debian system run
+
+```bash
+  ansible-playbook main.yml
+```
+
+Append `-K` if ansible users needs sudo password to elevate sudo privileges
+
+### Configuration
+
+After succesful Deployment visit `IP:3000` and fill out the details
+
+### Database Settings
+
+We are using SQLite for Database.
+If you are planning on running gitea with multiple teams and members it is recomended to use MySql.
+
+* Database Type: SQLite3
+* Path: Use an absolute path, `/var/lib/gitea/data/gitea.db`
+* Application General Settings:
+
+![Gitea Database Settings](./img/gitea_db.png)
+
+* Site Title: Enter your organization name.
+* Repository Root Path: Leave the default `var/lib/gitea/data/gitea-repositories`.
+* Git LFS Root Path: Leave the default `/var/lib/gitea/data/lfs`.
+* Run As Username: `git`
+* SSH Server Domain: Enter your domain or server IP address.
+* SSH Port: `22`, change it if SSH is listening on other Port
+* Gitea HTTP Listen Port: `3000`
+* Gitea Base URL: Use http and your domain or server IP address e.g. `http://127.0.0.1`
+* Log Path: Leave the default `/var/lib/gitea/log`
+
+![Gitea General Settings](./img/gitea_settings.png)
+
+### Admin Account
+
+Expand Optional settings and add details for admin account.
+
+![Gitea Admin Settings](./img/gitea_admin.png)
+
+To complete the installation click on install and it'll redirect to the login page.
+
+## Post Deployment
+
+`/etc/gitea` is temporary set with write rights for user `git`.
+After installation is done, it is recommended to set rights to read-only using:
+
+```bash
+ansible-playbook post_install.yml
+```
+
+Append `-K` if ansible users needs sudo password to elevate sudo privileges
+
+## Service management
+
+* Start gitea Service `sudo systemctl start gitea`
+* Stop gitea service `sudo systemctl stop gitea`
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## Authors
+
+[@kdpuvvadi](https://www.github.com/kdpuvvadi)
+
+## 🔗 Links
+
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/kdpuvvadi)
