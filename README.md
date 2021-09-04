@@ -59,7 +59,7 @@ After succesful Deployment visit `IP:3000` and fill out the details
 
 ### Database Settings
 
-We are using SQLite
+We are using SQLite for Database. If you are planning on running gitea with multiple teams and members it is recomended to use MySql.
 
 * Database Type: SQLite3
 * Path: Use an absolute path, `/var/lib/gitea/data/gitea.db`
