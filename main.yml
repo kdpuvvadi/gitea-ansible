@@ -13,8 +13,8 @@
     - name: Download and verify the binary
       import_tasks: tasks/binary.yml
 
-    - name: Set evn for gitea 
+    - name: Set evn for gitea
       import_tasks: tasks/env.yml
-    
+
     - name: install gitea as linux service
       import_tasks: tasks/install.yml

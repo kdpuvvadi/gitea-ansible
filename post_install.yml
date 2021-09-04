@@ -3,18 +3,19 @@ become: true
 
 pre_tasks:
   - name: Check gitea installation
-    stat: 
+    stat:
       path: /etc/gitea/app.ini
     register: gitea_conf
 
-tasks: 
+tasks:
   - name: reset the permissons for gitea
     file:
       path: /etc/gitea
       owner: root
       mode: '0750'
+
   - name: gitea config permissons
-    file: 
+    file:
       path: /etc/gitea/app.ini
       owner: root
       mode: '0640'

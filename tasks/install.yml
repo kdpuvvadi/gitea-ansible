@@ -1,16 +1,16 @@
 ---
 
 - name: check binary exists
-  stat: 
+  stat:
     path: /home/{{ ansible_user }}/binary/gitea
-  register: binary_status  
+  register: binary_status
 
 - name: rename downloaded binary
   command: "cp /home/{{ ansible_user }}/binary/gitea-{{ gitea_varsion }}-linux-amd64 /home/{{ ansible_user }}/binary/gitea"
   changed_when: binary_status.stat.exists != true
 
 - name: check binary in global location
-  stat: 
+  stat:
     path: /usr/local/bin/gitea
   register: binary_global
 
@@ -25,9 +25,9 @@
     mode: 0775
 
 - name: service start
-  service: 
+  service:
     name: gitea
-    enabled: yes
+    enabled: 'yes'
     state: started
 
 - name: check if reboot is needed
