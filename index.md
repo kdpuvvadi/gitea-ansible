@@ -1,7 +1,7 @@
 
-# LAMP Stack deployment using ansible playbook
+# Gitea Ansible playbook
 
-Deploy Gitea, A painless self-hosted Git service on Debian System with ansible playbook
+Deploy Gitea, your light weight git server on Debian System with ansible playbook
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ ansible-galaxy collection install -r requirements.yml
 
 ## Deployment
 
-To deploy LAMP stack on debian system run
+Run the playbook with
 
 ```bash
   ansible-playbook main.yml
