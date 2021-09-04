@@ -7,19 +7,25 @@ Deploy Gitea, your light weight git server on Debian System with ansible playboo
 
 ### Inventory
 
-* Copy sample invetory file `example.inventory.ini` to `inventory.ini` using `cp example.inventory.ini.j2 inventory.ini`
+* Copy sample invetory file `example.inventory.ini` to `inventory.ini` using
+
+```bash
+cp example.inventory.ini.j2 inventory.ini
+```
+
 * Change `ansible_host` value with host IP
 * Add ssh username to `ansible_user`
 
 ### Variables
 
-Copy sample variable file located in vars directory 
+Copy sample variable file located in vars directory
 `example.vars.yml` to `vars.yml` using `cp example.vars.yml vars.yml`
-##  Ansible Installation
+
+## Ansible Installation
 
 Install ansible with the following
 
-### Install python3 & pip3 
+### Install python3 & pip3
 
 ```bash
 sudo apt install python3 python3-pip -y`
@@ -36,6 +42,7 @@ python3 -m pip install ansible
 ```bash
 ansible-galaxy collection install -r requirements.yml
 ```
+
 ## Deployment
 
 To deploy LAMP stack on debian system run
@@ -43,13 +50,14 @@ To deploy LAMP stack on debian system run
 ```bash
   ansible-playbook main.yml
 ```
+
 Append `-K` if ansible users needs sudo password to elevate sudo privileges
 
 ### Configuration
 
 After succesful Deployment visit `IP:3000` and fill out the details
 
-### Database Settings:
+### Database Settings
 
 We are using SQLite
 
@@ -71,12 +79,13 @@ To complete the installation click on install and it'll redirect to the login pa
 
 ## Post Deployment
 
-`/etc/gitea` is temporary set with write rights for user `git` so that Web installer could write configuration file.
+`/etc/gitea` is temporary set with write rights for user `git`.
 After installation is done, it is recommended to set rights to read-only using:
 
 ```bash
 ansible-playbook post_install.yml
 ```
+
 Append `-K` if ansible users needs sudo password to elevate sudo privileges
 
 ## Service management
@@ -88,11 +97,10 @@ Append `-K` if ansible users needs sudo password to elevate sudo privileges
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-  
 ## Authors
 
-- [@kdpuvvadi](https://www.github.com/kdpuvvadi)
+[@kdpuvvadi](https://www.github.com/kdpuvvadi)
 
-  
 ## 🔗 Links
+
 [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/kdpuvvadi)
