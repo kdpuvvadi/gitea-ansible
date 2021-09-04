@@ -17,7 +17,7 @@
 - name: move binary to global location
   command: "cp /home/{{ ansible_user }}/binary/gitea /usr/local/bin/gitea"
   changed_when: false
-  when: binary_global.stat.exists == false
+  when: binary_global.stat.exists == 'false'
 
 - name: download config file
   get_url:
