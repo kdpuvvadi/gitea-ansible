@@ -8,14 +8,5 @@ pre_tasks:
     register: gitea_conf
 
 tasks:
-  - name: reset the permissons for gitea
-    file:
-      path: /etc/gitea
-      owner: root
-      mode: '0750'
-
-  - name: gitea config permissons
-    file:
-      path: /etc/gitea/app.ini
-      owner: root
-      mode: '0640'
+  - name: post install reset permissons
+    import_tasks: tasks/post.yml
