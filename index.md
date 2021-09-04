@@ -10,7 +10,7 @@ Deploy Gitea, your light weight git server on Debian System with ansible playboo
 * Copy sample invetory file `example.inventory.ini` to `inventory.ini` using
 
 ```bash
-cp example.inventory.ini.j2 inventory.ini
+cp example.inventory.ini inventory.ini
 ```
 
 * Change `ansible_host` value with host IP
