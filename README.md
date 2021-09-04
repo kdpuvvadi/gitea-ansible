@@ -71,13 +71,18 @@ To complete the installation click on install and it'll redirect to the login pa
 
 ## Post Deployment
 
-/etc/gitea is temporary set with write rights for user `git` so that Web installer could write configuration file.
+`/etc/gitea` is temporary set with write rights for user `git` so that Web installer could write configuration file.
 After installation is done, it is recommended to set rights to read-only using:
 
 ```bash
 ansible-playbook post_install.yml
 ```
 Append `-K` if ansible users needs sudo password to elevate sudo privileges
+
+## Service management
+
+* Start gitea Service `sudo systemctl start gitea`
+* Stop gitea service `sudo systemctl stop gitea`
 
 ## License
 
