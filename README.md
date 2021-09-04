@@ -59,11 +59,14 @@ After succesful Deployment visit `IP:3000` and fill out the details
 
 ### Database Settings
 
-We are using SQLite for Database. If you are planning on running gitea with multiple teams and members it is recomended to use MySql.
+We are using SQLite for Database.
+If you are planning on running gitea with multiple teams and members it is recomended to use MySql.
 
 * Database Type: SQLite3
 * Path: Use an absolute path, `/var/lib/gitea/data/gitea.db`
 * Application General Settings:
+
+![Gitea Database Settings](./img/gitea_db.png)
 
 * Site Title: Enter your organization name.
 * Repository Root Path: Leave the default `var/lib/gitea/data/gitea-repositories`.
@@ -74,6 +77,14 @@ We are using SQLite for Database. If you are planning on running gitea with mult
 * Gitea HTTP Listen Port: `3000`
 * Gitea Base URL: Use http and your domain or server IP address e.g. `http://127.0.0.1`
 * Log Path: Leave the default `/var/lib/gitea/log`
+
+![Gitea General Settings](./img/gitea_settings.png)
+
+### Admin Account
+
+Expand Optional settings and add details for admin account.
+
+![Gitea Admin Settings](./img/gitea_admin.png)
 
 To complete the installation click on install and it'll redirect to the login page.
 
