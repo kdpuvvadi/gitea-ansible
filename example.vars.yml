@@ -1,5 +1,5 @@
 ---
-gitea_varsion: 1.15.2
+gitea_varsion: 1.15.6
 
 gpg_server_gitea: keys.openpgp.org
 gpg_key_gitea: 7C9E68152594688862D62AF62D9AE806EC1592E2
