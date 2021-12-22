@@ -7,7 +7,7 @@ Deploy Gitea, your light weight git server on Debian System with ansible playboo
 
 ### Inventory
 
-* Copy sample invetory file `example.inventory.ini` to `inventory.ini` using
+* Copy sample invetory file `inventory.ini.j2` to `inventory.ini` with `cp inventory.ini.j2 inventory.ini`
 
 ```bash
 cp example.inventory.ini inventory.ini
@@ -19,7 +19,7 @@ cp example.inventory.ini inventory.ini
 ### Variables
 
 Copy sample variable file located in vars directory
-`example.vars.yml` to `vars.yml` using `cp example.vars.yml vars.yml`
+`vars.yml.j2` to `vars.yml` with `cp vars.yml.j2 vars.yml`
 
 ## Ansible Installation
 
@@ -35,12 +35,6 @@ sudo apt install python3 python3-pip -y`
 
 ```bash
 python3 -m pip install ansible
-```
-
-### install required modules
-
-```bash
-ansible-galaxy collection install -r requirements.yml
 ```
 
 ## Deployment
