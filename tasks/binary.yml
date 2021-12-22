@@ -5,7 +5,7 @@
     state: directory
     mode: "0755"
 
-- name: Download gitea binary
+- name: Download gitea binary v{{ gitea_varsion }}
   get_url:
     url: https://github.com/go-gitea/gitea/releases/download/v{{ gitea_varsion }}/gitea-{{ gitea_varsion }}-linux-amd64
     dest: /home/{{ ansible_user }}/binary
