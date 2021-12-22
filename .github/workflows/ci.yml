@@ -19,9 +19,6 @@ jobs:
       - name: install dependencies
         run: pip3 install ansible ansible-lint yamllint
 
-      - name: check ansible-lint version
-        run: ansible-lint --version
-
       - name: Ansible Lint
         run: ansible-lint .
 
